@@ -8,12 +8,18 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth = 100;  // 最大血量
     public int currentHealth;    // 当前血量
     public Slider healthSlider;  // 血量 UI 滑动条
+    public int lives = 3;
 
     void Start()
     {
         currentHealth = maxHealth;  // 初始化时设置为最大血量
         healthSlider.maxValue = maxHealth;  // 将 Slider 的最大值设置为最大血量
         healthSlider.value = currentHealth;  // 初始化时显示满血
+    }
+
+    void Update()
+    {
+        healthSlider.value = currentHealth;
     }
 
     // 玩家受到伤害时调用
@@ -29,11 +35,13 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    // 玩家死亡处理
+
+    public TwoPlayerRockPaperScissors TP;
     void Die()
     {
-        Debug.Log("Player has died!");
-        // 可以在这里处理玩家死亡的逻辑，比如重生或者结束游戏
+        Debug.Log("Battle START!");
+        TP.Update();
+        
     }
 
     // 玩家恢复血量时调用
