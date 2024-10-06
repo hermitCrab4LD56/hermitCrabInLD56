@@ -12,14 +12,23 @@ public class TwoPlayerRockPaperScissors : MonoBehaviour
     private bool player1Ready = false;
     private bool player2Ready = false;
 
-    public PlayerHealth pOne;
-    public PlayerHealth pTwo;
+    public PlayerHealth pOneHealth;
+    public PlayerHealth pTwoHealth;
+
+    public GameObject crabOne;
+    public GameObject crabTwo;
+    public GameObject crabOnes;
+    public GameObject crabTwos;
+
+    public Transform playerOneStartTrans;
+    public Transform playerTwoStartTrans;
+
 
     //pOne.currentHealth
 
     public void Update()
     {
-        if ((pOne.currentHealth == 0) || (pTwo.currentHealth == 0))
+        if ((pOneHealth.currentHealth == 0) || (pTwoHealth.currentHealth == 0))
             {// Player 1 Input
             if (Input.GetKeyDown(KeyCode.Q)) { SetPlayerChoice(1, Choice.Rock); }
             if (Input.GetKeyDown(KeyCode.W)) { SetPlayerChoice(1, Choice.Paper); }
@@ -35,7 +44,12 @@ public class TwoPlayerRockPaperScissors : MonoBehaviour
             {
                 DetermineWinner();
                 ResetChoices();
-            } 
+            }
+
+            crabOne.SetActive(false);
+            crabTwo.SetActive(false);
+            crabOnes.SetActive(true);
+            crabTwos.SetActive(true);
         }
     }
 
@@ -60,19 +74,21 @@ public class TwoPlayerRockPaperScissors : MonoBehaviour
         else
         {
             string winner = null;
-            if (pOne.currentHealth != 0)
+            if (pOneHealth.currentHealth != 0)
             {
-                pTwo.lives -= 1;
+                pTwoHealth.lives -= 1;
                 winner = "Player 1 wins!";
             }
             else
             {
-                pOne.lives -= 1;
+                pOneHealth.lives -= 1;
                 winner = "Player 2 wins!";
             }
             resultText.text = $"Player 1 chose: {player1Choice}\nPlayer 2 chose: {player2Choice}\n{winner}";
-            pOne.currentHealth = pOne.maxHealth;
-            pTwo.currentHealth = pTwo.maxHealth;
+            pOneHealth.currentHealth = pOneHealth.maxHealth;
+            pTwoHealth.currentHealth = pTwoHealth.maxHealth;
+            crabOne.transform.position = playerOneStartTrans.position;
+            crabTwo.transform.position = playerTwoStartTrans.position;
         }
         
     }
