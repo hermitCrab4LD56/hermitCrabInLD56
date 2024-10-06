@@ -42,10 +42,22 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);  // 确保血量不会低于 0
         //UpdateHealthBar();  // 更新血量条 UI
 
-        if (currentHealth <= 0)
+
+        if (currentHealth <= 50)
         {
-            Die();  // 如果血量降为 0，调用死亡处理
+           TrashFight();
         }
+
+        else if (currentHealth <= 0)
+        {
+            Die();               
+        }
+    }
+
+    public FallingTrash FT;
+    void TrashFight()
+    {
+        FT.RockStart();
     }
 
     public TwoPlayerRockPaperScissors TP;
