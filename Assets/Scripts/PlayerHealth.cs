@@ -39,8 +39,8 @@ public class PlayerHealth : MonoBehaviour
     public TwoPlayerRockPaperScissors TP;
     void Die()
     {
-        Debug.Log("Battle START!");
-        TP.Update();
+        //Debug.Log("Battle START!");
+        TP.RockStart();
         
     }
 

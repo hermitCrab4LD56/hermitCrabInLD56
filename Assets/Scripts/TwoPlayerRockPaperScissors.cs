@@ -24,11 +24,25 @@ public class TwoPlayerRockPaperScissors : MonoBehaviour
     public Transform playerTwoStartTrans;
 
 
+
     //pOne.currentHealth
+
+    public void RockStart()
+    {
+        //crabOne.SetActive(false);
+        crabOne.GetComponent<SpriteRenderer>().enabled = false;
+        crabOne.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+        //crabTwo.SetActive(false);
+        crabTwo.GetComponent<SpriteRenderer>().enabled = false;
+        crabTwo.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+        crabOnes.SetActive(true);
+        crabTwos.SetActive(true);
+    }
 
     public void Update()
     {
-        if ((pOneHealth.currentHealth == 0) || (pTwoHealth.currentHealth == 0))
+        //if ((pOneHealth.currentHealth == 0) || (pTwoHealth.currentHealth == 0))
+        if (crabOnes.activeSelf || crabTwos.activeSelf)
             {// Player 1 Input
             if (Input.GetKeyDown(KeyCode.Q)) { SetPlayerChoice(1, Choice.Rock); }
             if (Input.GetKeyDown(KeyCode.W)) { SetPlayerChoice(1, Choice.Paper); }
@@ -46,10 +60,10 @@ public class TwoPlayerRockPaperScissors : MonoBehaviour
                 ResetChoices();
             }
 
-            crabOne.SetActive(false);
-            crabTwo.SetActive(false);
-            crabOnes.SetActive(true);
-            crabTwos.SetActive(true);
+            //crabOnes.SetActive(false);
+            //crabTwos.SetActive(false);
+            //crabOne.GetComponent<SpriteRenderer>().enabled = true;
+            //crabTwo.GetComponent<SpriteRenderer>().enabled = true;
         }
     }
 
