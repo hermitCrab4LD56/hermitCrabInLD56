@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MainMenu : MonoBehaviour
 {
@@ -12,11 +14,26 @@ public class MainMenu : MonoBehaviour
     {
         
     }
-
-    // Update is called once per frame
+    public GameObject GetHighlightedButton()
+    {
+        var standaloneInputModule = EventSystem.current.currentInputModule as StandaloneInputModule;
+        if (standaloneInputModule != null)
+        {
+            FieldInfo fieldInfo = typeof(StandaloneInputModule).GetField("m_CurrentFocusedGameObject", BindingFlags.NonPublic | BindingFlags.Instance);
+            if (fieldInfo != null)
+            {
+                return fieldInfo.GetValue(standaloneInputModule) as GameObject;
+            }
+        }
+        return null;
+    }
     void Update()
     {
-        
+        GameObject highlightedButton = GetHighlightedButton();
+        if (highlightedButton != null)
+        {
+            Debug.Log("Currently highlighted button: " + highlightedButton.name);
+        }
     }
 
     public void Rule()
