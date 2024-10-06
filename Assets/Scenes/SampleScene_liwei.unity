@@ -993,6 +993,8 @@ MonoBehaviour:
   - {fileID: 333824511}
   - {fileID: 333824511}
   - {fileID: 418150584}
+  livessocket: []
+  livessocketimages: []
   attacker: {fileID: 0}
   TP: {fileID: 531759437}
 --- !u!114 &309134436
@@ -2155,6 +2157,8 @@ MonoBehaviour:
   - {fileID: 250280202}
   - {fileID: 1097808803}
   - {fileID: 1756835223}
+  livessocket: []
+  livessocketimages: []
   attacker: {fileID: 0}
   TP: {fileID: 531759437}
 --- !u!1 &827105293

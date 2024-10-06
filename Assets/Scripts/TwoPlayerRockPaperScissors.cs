@@ -140,11 +140,13 @@ public class TwoPlayerRockPaperScissors : MonoBehaviour
             {
                 pTwoHealth.lives -= 1;
                 winner = "Player 1 wins!";
+                pTwoHealth.UpdateLives();
             }
             else
             {
                 pOneHealth.lives -= 1;
                 winner = "Player 2 wins!";
+                pOneHealth.UpdateLives();
             }
             resultText.text = $"Player 1 chose: {player1Choice}\nPlayer 2 chose: {player2Choice}\n{winner}";
         }

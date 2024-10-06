@@ -11,6 +11,8 @@ public class PlayerHealth : MonoBehaviour
     public Image healthBarImage;  // 用于表示血量的填充条
     public int lives = 3;
     public List<Image> livesImages;  // 用于表示 lives 的图片列表
+    public SpriteRenderer[] livessocket;  // 用于表示 lives 的插槽
+    public Sprite[] livessocketimages;
     private bool isDefending = false;
     public Transform attacker;  // 攻击者的 Transform
 
@@ -61,18 +63,17 @@ public class PlayerHealth : MonoBehaviour
         //UpdateHealthBar();  // 更新血量条 UI
     }
     // 更新 lives 图片显示
-    void UpdateLives()
+    public void UpdateLives()
     {
-        // 循环所有 lives 图片，显示或隐藏它们
         for (int i = 0; i < livesImages.Count; i++)
         {
             if (i < lives)
             {
-                livesImages[i].enabled = true;  // 显示当前的 lives 图片
+                livesImages[i].enabled = true;  // 显示当前 lives 图片
             }
             else
             {
-                livesImages[i].enabled = false;  // 隐藏超出当前 lives 数量的图片
+                livesImages[i].enabled = false;  // 隐藏多余的 lives 图片
             }
         }
     }
