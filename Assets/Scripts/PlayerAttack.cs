@@ -81,6 +81,8 @@ public class PlayerAttack : MonoBehaviour
 
                 if (targetHealth != null && targetMovement != null)
                 {
+                    Debug.Log(targetMovement.IsAttackedFromBehind(this.transform));
+                    Debug.Log(targetMovement.IsFacingAway(this.transform));
                     // 检查是否攻击者在目标的背后，并且朝向不同
                     if (targetMovement.IsAttackedFromBehind(this.transform) && targetMovement.IsFacingAway(this.transform))
                     {

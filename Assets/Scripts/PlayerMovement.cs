@@ -115,6 +115,7 @@ public class PlayerMovement : MonoBehaviour
     // 判断攻击者是否在玩家的背部碰撞体积内
     public bool IsAttackedFromBehind(Transform attacker)
     {
+        Debug.Log("Player is onback");
         return backCollider.bounds.Contains(attacker.position);
     }
 }
