@@ -71,40 +71,39 @@ public class PlayerAttack : MonoBehaviour
     // 检测钳子是否击中了对方
     void CheckForHit()
     {
-        // 假设敌人有 PlayerMovement 和 PlayerHealth 组件
         Collider2D[] hitTargets = Physics2D.OverlapCircleAll(clawTransform.position, attackRange);
         foreach (Collider2D target in hitTargets)
         {
-            if(target.gameObject.tag != this.gameObject.tag){
+            if (target.gameObject.tag != this.gameObject.tag)
+            {
                 PlayerHealth targetHealth = target.GetComponent<PlayerHealth>();
                 PlayerMovement targetMovement = target.GetComponent<PlayerMovement>();
 
                 if (targetHealth != null && targetMovement != null)
                 {
-                    if (!targetMovement.IsDefending()) // 如果对方没有防御
+                    // 检查是否攻击者在目标的背后，并且朝向不同
+                    if (targetMovement.IsAttackedFromBehind(this.transform) && targetMovement.IsFacingAway(this.transform))
                     {
-                        targetHealth.TakeDamage(damage); // 造成伤害
-                                                         //attackSound.Play();  // 播放攻击音效
-                        Debug.Log("Hit! Damage dealt.");
+                        // 攻击者在目标背后并且朝向相反，直接造成伤害
+                        targetHealth.TakeDamage(damage);
+                        Debug.Log("Hit from behind with opposite facing! Damage dealt.");
                     }
                     else
                     {
-                        targetMovement.PlayBlockSuccessSound(); // 如果对方在防御，播放格挡成功音效
-                        Debug.Log("Attack blocked! No damage.");
+                        // 检查目标是否在防御状态
+                        if (targetMovement.IsDefending())
+                        {
+                            Debug.Log("Attack blocked! No damage.");
+                        }
+                        else
+                        {
+                            // 攻击目标前方且目标未防御，造成伤害
+                            targetHealth.TakeDamage(damage);
+                            Debug.Log("Hit! Damage dealt.");
+                        }
                     }
                 }
             }
-            
         }
-    }
-
-    // 在编辑器中显示攻击范围
-    void OnDrawGizmosSelected()
-    {
-        if (clawTransform == null)
-            return;
-
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(clawTransform.position, attackRange); // 在编辑器中显示攻击范围
     }
 }

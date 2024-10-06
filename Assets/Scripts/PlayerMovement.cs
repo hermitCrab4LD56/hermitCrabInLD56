@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public bool isPlayerTwo;
     public float moveSpeed = 5f;  // 玩家移动速度
     public KeyCode moveLeft;      // 左移动键
     public KeyCode moveRight;     // 右移动键
@@ -16,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isDefending = false;  // 是否在防御状态
     private Rigidbody2D rb;       // 玩家刚体，用于控制物理移动
     private Vector3 clawOffset;   // 钳子相对于玩家的偏移
-
+    public Collider2D backCollider;// 背部碰撞体积，用于检测攻击者是否在玩家背后
     public PlayerAttack pa;
 
     void Start()
@@ -33,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // 处理玩家移动逻辑
+    // 处理玩家移动逻辑
     void HandleMovement()
     {
         float moveDirection = 0f;
@@ -40,15 +42,30 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(moveLeft))
         {
             moveDirection = -1f;
+            if (isPlayerTwo)
+            {
+                this.GetComponent<SpriteRenderer>().flipX = false; // PlayerTwo 朝左
+            }
+            else
+            {
+                this.GetComponent<SpriteRenderer>().flipX = true;  // PlayerOne 朝左
+            }
         }
         else if (Input.GetKey(moveRight))
         {
             moveDirection = 1f;
+            if (isPlayerTwo)
+            {
+                this.GetComponent<SpriteRenderer>().flipX = true;  // PlayerTwo 朝右
+            }
+            else
+            {
+                this.GetComponent<SpriteRenderer>().flipX = false; // PlayerOne 朝右
+            }
         }
 
         rb.velocity = new Vector2(moveDirection * moveSpeed, rb.velocity.y);
     }
-
     // 处理防御逻辑
     void HandleDefense()
     {
@@ -85,5 +102,19 @@ public class PlayerMovement : MonoBehaviour
     public void PlayBlockSuccessSound()
     {
         blockSuccessSound.Play();
+    }
+    public bool IsFacingAway(Transform attacker)
+    {
+        // 获取玩家和攻击者的朝向
+        bool attackerFacingRight = attacker.GetComponent<SpriteRenderer>().flipX == (attacker.GetComponent<PlayerMovement>().isPlayerTwo ? true : false);
+        bool playerFacingRight = this.GetComponent<SpriteRenderer>().flipX == (this.isPlayerTwo ? true : false);
+
+        // 如果一个朝右，一个朝左，则认为朝向相反
+        return attackerFacingRight == playerFacingRight;
+    }
+    // 判断攻击者是否在玩家的背部碰撞体积内
+    public bool IsAttackedFromBehind(Transform attacker)
+    {
+        return backCollider.bounds.Contains(attacker.position);
     }
 }

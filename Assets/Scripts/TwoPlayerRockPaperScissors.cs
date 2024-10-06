@@ -43,7 +43,7 @@ public class TwoPlayerRockPaperScissors : MonoBehaviour
     {
         //if ((pOneHealth.currentHealth == 0) || (pTwoHealth.currentHealth == 0))
         if (crabOnes.activeSelf || crabTwos.activeSelf)
-            {// Player 1 Input
+        {// Player 1 Input
             if (Input.GetKeyDown(KeyCode.Q)) { SetPlayerChoice(1, Choice.Rock); }
             if (Input.GetKeyDown(KeyCode.W)) { SetPlayerChoice(1, Choice.Paper); }
             if (Input.GetKeyDown(KeyCode.E)) { SetPlayerChoice(1, Choice.Scissors); }
@@ -104,7 +104,7 @@ public class TwoPlayerRockPaperScissors : MonoBehaviour
             crabOne.transform.position = playerOneStartTrans.position;
             crabTwo.transform.position = playerTwoStartTrans.position;
         }
-        
+
     }
 
     private void ResetChoices()
