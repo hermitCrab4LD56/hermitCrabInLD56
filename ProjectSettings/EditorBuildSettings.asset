@@ -12,12 +12,15 @@ EditorBuildSettings:
     path: Assets/Scenes/BattleScene_Final.unity
     guid: cec20463cf23c22489d1816931f52bfb
   - enabled: 1
-    path: Assets/UI_zhouningjing/Scenes/RuleBook.unity
-    guid: 31a9467e7f85e0b40b99e606c5651df7
+    path: Assets/UI_zhouningjing/Scenes/RuleBox.unity
+    guid: 250a0cbd1c050984392390dfd962cce3
   - enabled: 1
     path: Assets/UI_zhouningjing/Scenes/Credit.unity
     guid: 5e6218f86b24dcc49a141734c90ca1a8
   - enabled: 1
-    path: Assets/UI_zhouningjing/Scenes/WinScene.unity
-    guid: 39f0e841be4bf484590227d8148679bb
+    path: Assets/UI_zhouningjing/Scenes/Orange Win.unity
+    guid: 9992ac9c5459c624680b37cb64109917
+  - enabled: 1
+    path: Assets/UI_zhouningjing/Scenes/Pink Win.unity
+    guid: 53a128d624c78f040b76c44a2e1f9409
   m_configObjects: {}
