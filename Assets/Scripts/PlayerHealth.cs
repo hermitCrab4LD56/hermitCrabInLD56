@@ -26,6 +26,10 @@ public class PlayerHealth : MonoBehaviour
     {
         // ¸üÐÂÑªÁ¿Ìõ
         UpdateHealthBar();
+        if(lives == 0)
+        {
+            //game over!!!!!!!!!!!!!!!!!!!!!!!!
+        }
     }
 
     // ¸üÐÂÑªÁ¿ÌõÏÔÊ¾
