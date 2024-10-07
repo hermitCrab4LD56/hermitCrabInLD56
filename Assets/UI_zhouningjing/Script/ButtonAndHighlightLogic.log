@@ -1,0 +1,5 @@
+使用新输入系统 unity package的input system
+在event system中根据替换掉旧的
+取消 input里的 point 和click，具体对照源文件event system
+挂载ButtonAndHighlightLogic脚本到event system
+如果是用带字体的button组件，把button的子物体text里的text组件下面的raycast target勾选掉
