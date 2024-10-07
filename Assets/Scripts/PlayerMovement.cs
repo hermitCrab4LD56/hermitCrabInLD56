@@ -72,7 +72,10 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetBool("isWalking", false);
         }
-
+        if((transform.position.x < -8.5f && moveDirection < 0) || (transform.position.x > 8.5 && moveDirection > 0))
+        {
+            moveDirection = 0;
+        }
         rb.velocity = new Vector2(moveDirection * moveSpeed, rb.velocity.y);
         
     }
