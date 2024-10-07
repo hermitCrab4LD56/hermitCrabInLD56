@@ -18,7 +18,12 @@ public class PlayerAttack : MonoBehaviour
     private PlayerMovement playerMovement; // 用于检测对方是否防御
 
     public PlayerMovement pm;
+    Animator anim;
 
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
     void Start()
     {
         originalClawPosition = clawTransform.localPosition; // 记录钳子初始位置
@@ -36,6 +41,7 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetKeyDown(attackKey) && canAttack && !pm.isDefending)
         {
             StartCoroutine(SwingClaw()); // 启动钳子挥动
+            anim.SetTrigger("Attack");
         }
     }
 

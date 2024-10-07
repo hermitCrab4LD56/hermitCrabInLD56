@@ -19,7 +19,12 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 clawOffset;   // 钳子相对于玩家的偏移
     public Collider2D backCollider;// 背部碰撞体积，用于检测攻击者是否在玩家背后
     public PlayerAttack pa;
+    Animator anim;
 
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -33,13 +38,13 @@ public class PlayerMovement : MonoBehaviour
         HandleDefense();
     }
 
-    // 处理玩家移动逻辑
     void HandleMovement()
     {
         float moveDirection = 0f;
 
         if (Input.GetKey(moveLeft))
         {
+            anim.SetBool("isWalking", true);
             moveDirection = -1f;
             if (isPlayerTwo)
             {
@@ -52,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (Input.GetKey(moveRight))
         {
+            anim.SetBool("isWalking", true);
             moveDirection = 1f;
             if (isPlayerTwo)
             {
@@ -62,14 +68,20 @@ public class PlayerMovement : MonoBehaviour
                 this.GetComponent<SpriteRenderer>().flipX = false; // PlayerOne 朝右
             }
         }
+        else
+        {
+            anim.SetBool("isWalking", false);
+        }
 
         rb.velocity = new Vector2(moveDirection * moveSpeed, rb.velocity.y);
+        
     }
     // 处理防御逻辑
     void HandleDefense()
     {
         if (Input.GetKey(defenseKey) && pa.canAttack)
         {
+            anim.SetTrigger("Defend");
             Debug.Log("111");
             isDefending = true;
             clawTransform.localPosition = clawOffset + defensePositionOffset; // 将钳子移动到头顶
@@ -83,11 +95,16 @@ public class PlayerMovement : MonoBehaviour
                 
             Debug.Log("Player is defending");
         }
-        if(Input.GetKeyUp(defenseKey))
+        else if(Input.GetKeyUp(defenseKey))
         {
+            anim.SetTrigger("StopDefend");
             Debug.Log("222");
             isDefending = false;
             clawTransform.localPosition = clawOffset; // 恢复钳子到初始位置
+        }
+        else
+        {
+            anim.SetTrigger("StopDefend");
         }
     }
 

@@ -16,6 +16,12 @@ public class PlayerHealth : MonoBehaviour
     private bool isDefending = false;
     public Transform attacker;  // ¹¥»÷ÕßµÄ Transform
 
+    Animator anim;
+
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
     void Start()
     {
         currentHealth = maxHealth;  // ³õÊ¼»¯Ê±ÉèÖÃÎª×î´óÑªÁ¿
@@ -42,6 +48,7 @@ public class PlayerHealth : MonoBehaviour
     // Íæ¼ÒÊÜµ½ÉËº¦Ê±µ÷ÓÃ
     public void TakeDamage(int damage)
     {
+        anim.SetTrigger("Stun");
         currentHealth -= damage;  // ¼õÉÙµ±Ç°ÑªÁ¿
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);  // È·±£ÑªÁ¿²»»áµÍÓÚ 0
         //UpdateHealthBar();  // ¸üÐÂÑªÁ¿Ìõ UI
