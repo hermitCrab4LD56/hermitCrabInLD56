@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/UI_zhouningjing/Scenes/MainMenu.unity
+    guid: 4fc1f0ead089e7a46846aa33bee9e487
+  - enabled: 1
+    path: Assets/Scenes/BattleScene_Final.unity
+    guid: cec20463cf23c22489d1816931f52bfb
+  - enabled: 1
+    path: Assets/UI_zhouningjing/Scenes/RuleBook.unity
+    guid: 31a9467e7f85e0b40b99e606c5651df7
+  - enabled: 1
+    path: Assets/UI_zhouningjing/Scenes/Credit.unity
+    guid: 5e6218f86b24dcc49a141734c90ca1a8
+  - enabled: 1
+    path: Assets/UI_zhouningjing/Scenes/WinScene.unity
+    guid: 39f0e841be4bf484590227d8148679bb
   m_configObjects: {}
