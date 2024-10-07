@@ -85,11 +85,11 @@ public class PlayerHealth : MonoBehaviour
         {
             if (i < lives)
             {
-                livesImages[i].enabled = true;  // ÏÔÊ¾µ±Ç° lives Í¼Æ¬
+                livesImages[i].enabled = true;  // Show the current lives image
             }
             else
             {
-                livesImages[i].enabled = false;  // Òþ²Ø¶àÓàµÄ lives Í¼Æ¬
+                livesImages[i].enabled = false;
             }
         }
     }

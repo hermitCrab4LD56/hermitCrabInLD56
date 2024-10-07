@@ -1091,10 +1091,7 @@ MonoBehaviour:
   currentHealth: 100
   healthBarImage: {fileID: 1196665506}
   lives: 3
-  livesImages:
-  - {fileID: 333824511}
-  - {fileID: 333824511}
-  - {fileID: 418150584}
+  livesImages: []
   livessocket: []
   livessocketimages: []
   attacker: {fileID: 0}
@@ -2424,10 +2421,7 @@ MonoBehaviour:
   currentHealth: 100
   healthBarImage: {fileID: 56070762}
   lives: 3
-  livesImages:
-  - {fileID: 250280202}
-  - {fileID: 1097808803}
-  - {fileID: 1756835223}
+  livesImages: []
   livessocket: []
   livessocketimages: []
   attacker: {fileID: 0}
