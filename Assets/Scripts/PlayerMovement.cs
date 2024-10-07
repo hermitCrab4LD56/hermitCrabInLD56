@@ -21,6 +21,9 @@ public class PlayerMovement : MonoBehaviour
     public PlayerAttack pa;
     Animator anim;
 
+    public GameObject walkvfxOne;
+    public GameObject walkvfxTwo;
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -44,6 +47,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey(moveLeft))
         {
+            walkvfxOne.SetActive(true);
+            walkvfxTwo.SetActive(true);
             anim.SetBool("isWalking", true);
             moveDirection = -1f;
             if (isPlayerTwo)
@@ -57,6 +62,8 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (Input.GetKey(moveRight))
         {
+            walkvfxOne.SetActive(true);
+            walkvfxTwo.SetActive(true);
             anim.SetBool("isWalking", true);
             moveDirection = 1f;
             if (isPlayerTwo)
@@ -70,6 +77,8 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            walkvfxOne.SetActive(false);
+            walkvfxTwo.SetActive(false);
             anim.SetBool("isWalking", false);
         }
         if((transform.position.x < -8.5f && moveDirection < 0) || (transform.position.x > 8.5 && moveDirection > 0))

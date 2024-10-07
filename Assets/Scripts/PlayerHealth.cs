@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -35,6 +36,16 @@ public class PlayerHealth : MonoBehaviour
         if(lives == 0)
         {
             //game over!!!!!!!!!!!!!!!!!!!!!!!!
+            if(this.gameObject.tag == "PlayerOne")
+            {
+                Debug.Log("PlayerOne is dead");
+                SceneManager.LoadScene("PlayerTwoWin");
+            }
+            else
+            {
+                Debug.Log("PlayerTwo is dead");
+                SceneManager.LoadScene("PlayerOneWin");
+            }
         }
     }
 

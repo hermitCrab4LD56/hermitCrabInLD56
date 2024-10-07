@@ -39,10 +39,10 @@ public class FallingTrash : MonoBehaviour
     {
         //crabOne.SetActive(false);
         crabOne.GetComponent<SpriteRenderer>().enabled = false;
-        crabOne.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+        //crabOne.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
         //crabTwo.SetActive(false);
         crabTwo.GetComponent<SpriteRenderer>().enabled = false;
-        crabTwo.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+        //crabTwo.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
         crabOnet.SetActive(true);
         crabTwot.SetActive(true);
 
@@ -168,9 +168,9 @@ public class FallingTrash : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         crabOne.GetComponent<SpriteRenderer>().enabled = true;
-        crabOne.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+        //crabOne.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
         crabTwo.GetComponent<SpriteRenderer>().enabled = true;
-        crabTwo.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+        //crabTwo.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
         crabOnet.SetActive(false);
         crabTwot.SetActive(false);
         //pOneHealth.currentHealth = pOneHealth.maxHealth;

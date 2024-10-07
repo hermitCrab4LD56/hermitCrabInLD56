@@ -39,10 +39,10 @@ public class TwoPlayerRockPaperScissors : MonoBehaviour
     {
         //crabOne.SetActive(false);
         crabOne.GetComponent<SpriteRenderer>().enabled = false;
-        crabOne.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+        //crabOne.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
         //crabTwo.SetActive(false);
         crabTwo.GetComponent<SpriteRenderer>().enabled = false;
-        crabTwo.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+        //crabTwo.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
         crabOnes.SetActive(true);
         crabTwos.SetActive(true);
 
@@ -164,9 +164,9 @@ public class TwoPlayerRockPaperScissors : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         crabOne.GetComponent<SpriteRenderer>().enabled = true;
-        crabOne.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+        //crabOne.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
         crabTwo.GetComponent<SpriteRenderer>().enabled = true;
-        crabTwo.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+        //crabTwo.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
         crabOnes.SetActive(false);
         crabTwos.SetActive(false);
         pOneHealth.currentHealth = pOneHealth.maxHealth;

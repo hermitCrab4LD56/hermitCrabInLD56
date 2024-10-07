@@ -19,6 +19,9 @@ public class PlayerAttack : MonoBehaviour
 
     public PlayerMovement pm;
     Animator anim;
+    public GameObject defendvfx;
+    public GameObject hitvfx;
+    public Transform defendTrans;
 
     private void Awake()
     {
@@ -42,6 +45,7 @@ public class PlayerAttack : MonoBehaviour
         {
             StartCoroutine(SwingClaw()); // 启动钳子挥动
             anim.SetTrigger("Attack");
+
         }
     }
 
@@ -94,6 +98,7 @@ public class PlayerAttack : MonoBehaviour
                     {
                         // 攻击者在目标背后并且朝向相反，直接造成伤害
                         targetHealth.TakeDamage(damage);
+                        Instantiate(hitvfx, defendTrans.position, Quaternion.identity);
                         Debug.Log("Hit from behind with opposite facing! Damage dealt.");
                     }
                     else
@@ -101,10 +106,12 @@ public class PlayerAttack : MonoBehaviour
                         // 检查目标是否在防御状态
                         if (targetMovement.IsDefending())
                         {
+                            Instantiate(defendvfx, defendTrans.position, Quaternion.identity);
                             Debug.Log("Attack blocked! No damage.");
                         }
                         else
                         {
+                            Instantiate(hitvfx, defendTrans.position, Quaternion.identity);
                             // 攻击目标前方且目标未防御，造成伤害
                             targetHealth.TakeDamage(damage);
                             Debug.Log("Hit! Damage dealt.");
