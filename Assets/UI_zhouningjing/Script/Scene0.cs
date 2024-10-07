@@ -76,7 +76,7 @@ public class Scene0 : MonoBehaviour
             panel.localScale = Vector3.Lerp(initialScale, finalScale, normalizedTime);
             yield return null;
         }
-
+        if (panel != null)
         panel.localScale = finalScale;
     }
 }

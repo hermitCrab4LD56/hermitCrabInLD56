@@ -36,15 +36,19 @@ public class PlayerHealth : MonoBehaviour
         if(lives == 0)
         {
             //game over!!!!!!!!!!!!!!!!!!!!!!!!
-            if(this.gameObject.tag == "PlayerOne")
+            if(this.gameObject.tag == "PlayerOne" && GameObject.Find("Playertwo").GetComponent<PlayerHealth>().lives != 0)
             {
                 Debug.Log("PlayerOne is dead");
                 SceneManager.LoadScene("Pink Win");
             }
-            else
+            else if(this.gameObject.tag == "PlayerTwo" && GameObject.Find("Playerone").GetComponent<PlayerHealth>().lives != 0)
             {
                 Debug.Log("PlayerTwo is dead");
                 SceneManager.LoadScene("Orange Win");
+            }
+            else
+            {
+                SceneManager.LoadScene("Tie");
             }
         }
     }
@@ -67,7 +71,7 @@ public class PlayerHealth : MonoBehaviour
         //条件不对，到零了也又触发一次。而且规则改了，还要判断生命小于3
         if (currentHealth <= 60 && currentHealth >40 && lives <3)
         {
-           TrashFight();
+            TrashFight();
         }
 
         else if (currentHealth <= 0)
@@ -79,12 +83,14 @@ public class PlayerHealth : MonoBehaviour
     public FallingTrash FT;
     void TrashFight()
     {
+        SfxManager.instance.PlaySfx("RockMode");
         FT.RockStart();
     }
 
     public TwoPlayerRockPaperScissors TP;
     void Die()
     {
+        SfxManager.instance.PlaySfx("RockMode");
         //Debug.Log("Battle START!");
         TP.RockStart();
     }

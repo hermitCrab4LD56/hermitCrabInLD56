@@ -156,6 +156,7 @@ public class TwoPlayerRockPaperScissors : MonoBehaviour
 
         else
         {
+            SfxManager.instance.PlaySfx("TakeCoverOff_3");
             string winner = null;
             if (pOneHealth.currentHealth != 0)
             {

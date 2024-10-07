@@ -100,12 +100,14 @@ public class PlayerAttack : MonoBehaviour
                         targetHealth.TakeDamage(damage);
                         Instantiate(hitvfx, defendTrans.position, Quaternion.identity);
                         Debug.Log("Hit from behind with opposite facing! Damage dealt.");
+                        SfxManager.instance.PlaySfx("AttackSuccess");
                     }
                     else
                     {
                         // 检查目标是否在防御状态
                         if (targetMovement.IsDefending())
                         {
+                            SfxManager.instance.PlaySfx("DefendSuccess");
                             Instantiate(defendvfx, defendTrans.position, Quaternion.identity);
                             Debug.Log("Attack blocked! No damage.");
                         }
@@ -115,6 +117,7 @@ public class PlayerAttack : MonoBehaviour
                             // 攻击目标前方且目标未防御，造成伤害
                             targetHealth.TakeDamage(damage);
                             Debug.Log("Hit! Damage dealt.");
+                            SfxManager.instance.PlaySfx("AttackSuccess");
                         }
                     }
                 }

@@ -32,6 +32,8 @@ public class FallingTrash : MonoBehaviour
     public GameObject successUI;
     public GameObject missUI;
     public GameObject jointUI;
+    public GameObject beerBack;
+    public GameObject beerFall;
     //pOne.currentHealth
     private void Start()
     {
@@ -40,6 +42,7 @@ public class FallingTrash : MonoBehaviour
     }
     public void RockStart()
     {
+        jointUI.SetActive(true);
         //crabOne.SetActive(false);
         crabOne.GetComponent<SpriteRenderer>().enabled = false;
         //crabOne.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
@@ -148,7 +151,11 @@ public class FallingTrash : MonoBehaviour
     private void DetermineWinner()
     {
         if (player1Choice == player2Choice)
+        {
+            beerBack.SetActive(true);
             successUI.SetActive(true);
+        }
+            
         //resultText.text = $"Both chose {player1Choice}. Dodge Trash Success!";
         else
         {
@@ -157,10 +164,12 @@ public class FallingTrash : MonoBehaviour
             pOneHealth.UpdateLives();
             pTwoHealth.UpdateLives();
             missUI.SetActive(true);
+            beerFall.SetActive(true);
             //resultText.text = $"You chose the different key. Missed";
         }
         //play animation
         StartCoroutine("ResetToBattle");
+        jointUI.SetActive(false);
     }
 
     private void ResetChoices()
