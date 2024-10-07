@@ -70,6 +70,7 @@ public class FallingTrash : MonoBehaviour
 
     public void Update()
     {
+        //
         //if ((pOneHealth.currentHealth == 0) || (pTwoHealth.currentHealth == 0))
         if (crabOnet.activeSelf || crabTwot.activeSelf)
         {
