@@ -29,6 +29,11 @@ public class TwoPlayerRockPaperScissors : MonoBehaviour
     public SpriteRenderer[] chara;
     public Sprite[] charaImages;
 
+    public GameObject orangeHurt;
+    public GameObject pinkHurt;
+    public GameObject orangeDie;
+    public GameObject pinkDie;
+
     //pOne.currentHealth
     private void Start()
     {
@@ -132,18 +137,32 @@ public class TwoPlayerRockPaperScissors : MonoBehaviour
     private void DetermineWinner()
     {
         if (player1Choice == player2Choice)
+        {
             resultText.text = $"Both chose {player1Choice}. It's a tie!";
+            if (pOneHealth.currentHealth != 0)
+            {
+                orangeHurt.SetActive(true);
+            }
+            else
+            {
+                pinkHurt.SetActive(true);
+            }
+        }
+            
+
         else
         {
             string winner = null;
             if (pOneHealth.currentHealth != 0)
             {
+                orangeDie.SetActive(true);
                 pTwoHealth.lives -= 1;
                 winner = "Player 1 wins!";
                 pTwoHealth.UpdateLives();
             }
             else
             {
+                pinkDie.SetActive(true);
                 pOneHealth.lives -= 1;
                 winner = "Player 2 wins!";
                 pOneHealth.UpdateLives();
@@ -162,13 +181,15 @@ public class TwoPlayerRockPaperScissors : MonoBehaviour
 
     IEnumerator ResetToBattle()
     {
-        yield return new WaitForSeconds(2);
+        crabOnes.SetActive(false);
+        crabTwos.SetActive(false);
+
+        yield return new WaitForSeconds(3);
         crabOne.GetComponent<SpriteRenderer>().enabled = true;
         //crabOne.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
         crabTwo.GetComponent<SpriteRenderer>().enabled = true;
         //crabTwo.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
-        crabOnes.SetActive(false);
-        crabTwos.SetActive(false);
+        
         pOneHealth.currentHealth = pOneHealth.maxHealth;
         pTwoHealth.currentHealth = pTwoHealth.maxHealth;
         crabOne.transform.position = playerOneStartPos;
