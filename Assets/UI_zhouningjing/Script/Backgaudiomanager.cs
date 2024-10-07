@@ -44,7 +44,7 @@ public class Backgaudiomanager : MonoBehaviour
         {
             if (audioSource.clip != backgroundMusic[sceneIndex])
             {
-                StartCoroutine(FadeOutCurrentMusic()); 
+                //StartCoroutine(FadeOutCurrentMusic()); 
                 audioSource.clip = backgroundMusic[sceneIndex];
                 StartCoroutine(FadeInBackgroundMusic()); 
             }
@@ -58,12 +58,12 @@ public class Backgaudiomanager : MonoBehaviour
     private IEnumerator FadeOutCurrentMusic()
     {
         float startVolume = audioSource.volume;
-
-        while (audioSource.volume > 0)
-        {
-            audioSource.volume -= startVolume * Time.deltaTime / fadeDuration;
-            yield return null;
-        }
+        yield return null;
+        //while (audioSource.volume > 0)
+        //{
+        //    audioSource.volume -= startVolume * Time.deltaTime / fadeDuration;
+        //    yield return null;
+        //}
 
         audioSource.Stop();
         audioSource.volume = startVolume; 
@@ -72,13 +72,13 @@ public class Backgaudiomanager : MonoBehaviour
     private IEnumerator FadeInBackgroundMusic()
     {
         audioSource.volume = 0; 
-        audioSource.Play(); 
-
-        while (audioSource.volume < 1)
-        {
-            audioSource.volume += Time.deltaTime / fadeDuration; 
-            yield return null;
-        }
+        audioSource.Play();
+        yield return null;
+        //while (audioSource.volume < 1)
+        //{
+        //    audioSource.volume += Time.deltaTime / fadeDuration; 
+        //    yield return null;
+        //}
 
         audioSource.volume = 1; 
     }

@@ -29,6 +29,9 @@ public class FallingTrash : MonoBehaviour
     public SpriteRenderer[] chara;
     public Sprite[] charaImages;
 
+    public GameObject successUI;
+    public GameObject missUI;
+    public GameObject jointUI;
     //pOne.currentHealth
     private void Start()
     {
@@ -145,14 +148,16 @@ public class FallingTrash : MonoBehaviour
     private void DetermineWinner()
     {
         if (player1Choice == player2Choice)
-            resultText.text = $"Both chose {player1Choice}. Dodge Trash Success!";
+            successUI.SetActive(true);
+        //resultText.text = $"Both chose {player1Choice}. Dodge Trash Success!";
         else
         {
             pOneHealth.lives -= 1;
             pTwoHealth.lives -= 1;
             pOneHealth.UpdateLives();
             pTwoHealth.UpdateLives();
-            resultText.text = $"You chose the different key. Missed";
+            missUI.SetActive(true);
+            //resultText.text = $"You chose the different key. Missed";
         }
         //play animation
         StartCoroutine("ResetToBattle");

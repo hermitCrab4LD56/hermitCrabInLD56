@@ -34,6 +34,9 @@ public class TwoPlayerRockPaperScissors : MonoBehaviour
     public GameObject orangeDie;
     public GameObject pinkDie;
 
+    public GameObject attackWinUI;
+    public GameObject defendWinUI;
+
     //pOne.currentHealth
     private void Start()
     {
@@ -138,7 +141,8 @@ public class TwoPlayerRockPaperScissors : MonoBehaviour
     {
         if (player1Choice == player2Choice)
         {
-            resultText.text = $"Both chose {player1Choice}. It's a tie!";
+            defendWinUI.SetActive(true);
+            //resultText.text = $"Both chose {player1Choice}. It's a tie!";
             if (pOneHealth.currentHealth != 0)
             {
                 orangeHurt.SetActive(true);
@@ -167,7 +171,8 @@ public class TwoPlayerRockPaperScissors : MonoBehaviour
                 winner = "Player 2 wins!";
                 pOneHealth.UpdateLives();
             }
-            resultText.text = $"Player 1 chose: {player1Choice}\nPlayer 2 chose: {player2Choice}\n{winner}";
+            attackWinUI.SetActive(true);
+            //resultText.text = $"Player 1 chose: {player1Choice}\nPlayer 2 chose: {player2Choice}\n{winner}";
         }
         //play animation
         StartCoroutine("ResetToBattle");

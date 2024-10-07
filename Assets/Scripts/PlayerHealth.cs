@@ -39,12 +39,12 @@ public class PlayerHealth : MonoBehaviour
             if(this.gameObject.tag == "PlayerOne")
             {
                 Debug.Log("PlayerOne is dead");
-                SceneManager.LoadScene("PlayerTwoWin");
+                SceneManager.LoadScene("Pink Win");
             }
             else
             {
                 Debug.Log("PlayerTwo is dead");
-                SceneManager.LoadScene("PlayerOneWin");
+                SceneManager.LoadScene("Orange Win");
             }
         }
     }

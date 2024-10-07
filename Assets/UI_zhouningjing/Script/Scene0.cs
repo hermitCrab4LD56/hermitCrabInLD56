@@ -58,7 +58,7 @@ public class Scene0 : MonoBehaviour
         {
             float normalizedTime = t / transitionTime;
             color.a = Mathf.Lerp(startAlpha, 1, normalizedTime);
-            transitionImage.color = color;
+            //transitionImage.color = color;
             yield return null;
         }
         color.a = 1;
